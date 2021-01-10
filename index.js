@@ -182,6 +182,8 @@ app.post('/api/sign-in', (req, res) => res.status(200).send());
 
 app.use('/api/images', express.static('images'));
 app.use('/', express.static('dist', {index: 'index.html'}))
+app.set( 'port', ( 5000 ));
+
 
 
 app.listen(80, () => console.log('Server listening on port 80!'));
