@@ -3,6 +3,13 @@ const express = require("express");
 
 const app = express();
 
+const PORT = process.env.PORT || 80;
+var server = app.listen(PORT, function() {
+  var host = server.address().address;
+  var port = server.address().port;
+  console.log("server is listening at http://%s:%s", host, port);
+});
+
 app.get('/api/parts', (req, res) =>
   res.send({
     heads: [
@@ -176,5 +183,6 @@ app.post('/api/sign-in', (req, res) => res.status(200).send());
 app.use('/api/images', express.static('images'));
 app.use('/', express.static('dist', {index: 'index.html'}))
 
-app.listen(8081, () => console.log('Server listening on port 8081!'));
+
+app.listen(80, () => console.log('Server listening on port 80!'));
 
